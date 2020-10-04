@@ -10,7 +10,7 @@ test('canDownload', t => {
 	t.false(instagramDownloader.canDownload('https://jonah.pw/'));
 });
 
-test('resolveIds', async t => {
+test.serial('resolveIds', async t => {
 	t.deepEqual(await instagramDownloader.resolveIds('https://www.instagram.com/p/CF2zmluMjL5/'), [{id: 'CF2zmluMjL5', kind: InstagramIdKind.Post}], 'post');
 
 	t.deepEqual(
@@ -37,7 +37,7 @@ test('resolveIds', async t => {
 	]);
 });
 
-test('download', async t => {
+test.serial('download', async t => {
 	const downloadsPath = join(__dirname, '..', '..', 'test', 'downloads');
 
 	await Promise.all([
