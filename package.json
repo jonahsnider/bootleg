@@ -16,23 +16,36 @@
 			"source-map-support/register"
 		]
 	},
+	"bin": {
+		"bootleg": "./bin/run"
+	},
 	"bugs": {
-		"url": "https://github.com/pizzafox/typescript-starter/issues"
+		"url": "https://github.com/pizzafox/bootleg/issues"
+	},
+	"dependencies": {
+		"@oclif/command": "^1.8.0",
+		"convert": "^1.0.1",
+		"got": "^11.7.0"
 	},
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
+		"@types/node": "^14.11.2",
 		"ava": "3.13.0",
 		"nyc": "15.1.0",
 		"prettier": "2.0.4",
 		"source-map-support": "0.5.19",
 		"ts-node": "9.0.0",
-		"type-fest": "0.17.0",
+		"type-fest": "^0.17.0",
+		"typedoc": "^0.19.2",
 		"typescript": "3.9.7",
 		"xo": "0.33.1"
 	},
+	"files": [
+		"./bin"
+	],
 	"license": "Apache-2.0",
 	"main": "./tsc_output/index.js",
-	"name": "typescript-starter",
+	"name": "bootleg",
 	"nyc": {
 		"all": true,
 		"extends": "@istanbuljs/nyc-config-typescript",
@@ -44,16 +57,20 @@
 			"cobertura"
 		]
 	},
+	"oclif": {
+		"bin": "bootleg"
+	},
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/pizzafox/typescript-starter.git"
+		"url": "git+https://github.com/pizzafox/bootleg.git"
 	},
 	"scripts": {
 		"build": "tsc",
+		"docs": "typedoc --out docs_out --mode file --exclude \"src/*/*.test.*\"",
 		"lint": "xo",
 		"prebuild": "rm -rf tsc_output",
-		"pretest": "rm -rf coverage .nyc_output",
+		"pretest": "rm -rf coverage .nyc_output test/downloads",
 		"style": "prettier --ignore-path .gitignore --check .",
 		"test": "nyc ava"
 	},
