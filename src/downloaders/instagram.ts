@@ -2,6 +2,7 @@ import {convert} from 'convert';
 import {mkdir} from 'fs/promises';
 import got from 'got';
 import {join as joinPaths} from 'path';
+import {URL} from 'url';
 import {download} from '../download';
 import {Downloader, DownloadOptions, Media} from '../downloader';
 
@@ -20,10 +21,11 @@ interface PostData {
 			taken_at_timestamp: number;
 			shortcode: string;
 			display_url: string;
+			video_url?: string;
 			is_video: boolean;
 			edge_sidecar_to_children?: {
 				edges: Array<{
-					node: {shortcode: string; display_url: string; is_video: boolean};
+					node: {shortcode: string; display_url: string; is_video: boolean; video_url?: string};
 				}>;
 			};
 			owner: {
@@ -45,10 +47,12 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 	}
 
 	/**
-	 * @param parsed - Parsed URL to reuse
+	 * @param preParsed - Parsed URL to reuse
 	 */
-	canDownload(media: string, parsed?: URL): boolean {
-		return instagramHostname.test((parsed ?? new URL(media)).hostname);
+	canDownload(media: string, preParsed?: URL): boolean {
+		const parsed = preParsed ?? new URL(media);
+
+		return instagramHostname.test(parsed.hostname);
 	}
 
 	async resolveIds(media: string): Promise<InstagramMedia[]> {
@@ -94,43 +98,41 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 				const timestamp = new Date(convert(shortcodeMedia.taken_at_timestamp).from('seconds').to('ms'));
 				const {username} = shortcodeMedia.owner;
 
+				// Create the directory of the post owner's username
 				const userDirectory = joinPaths(directory, username, shortcodeMedia.shortcode);
 				await mkdir(userDirectory, {recursive: true});
 
-				const mediaDownloads: Array<Promise<void>> = [];
+				/** Download options used for every piece of media from this post. */
+				const baseDownloadOptions = {directory, username, timestamp, parentShortcode: shortcodeMedia.shortcode};
+
+				/** Basic information on every piece of media that should be downloaded for a post. */
+				const childMedias: Array<{shortcode: string; displayUrl: string; videoUrl?: string}> = [];
 
 				if (shortcodeMedia.edge_sidecar_to_children) {
-					// Multiple media for this post
+					// Multiple items for this post
 
 					shortcodeMedia.edge_sidecar_to_children.edges.forEach(({node}) =>
-						mediaDownloads.push(
-							this.downloadPostChild({
-								directory,
-								username,
-								timestamp,
-								isVideo: node.is_video,
-								parentShortcode: shortcodeMedia.shortcode,
-								mediaUrl: node.display_url,
-								shortcode: node.shortcode
-							})
-						)
+						childMedias.push({shortcode: node.shortcode, displayUrl: node.display_url, videoUrl: node.video_url})
 					);
 				} else {
-					// Single media for this post
-					mediaDownloads.push(
-						this.downloadPostChild({
-							directory,
-							username,
-							timestamp,
-							isVideo: shortcodeMedia.is_video,
-							parentShortcode: shortcodeMedia.shortcode,
-							mediaUrl: shortcodeMedia.display_url,
-							shortcode: shortcodeMedia.shortcode
-						})
-					);
+					// Single item for this post
+					childMedias.push({displayUrl: shortcodeMedia.display_url, shortcode: shortcodeMedia.shortcode, videoUrl: shortcodeMedia.video_url});
 				}
 
-				await Promise.all(mediaDownloads);
+				const promises: Array<Promise<void>> = [];
+
+				childMedias.forEach(childMedia => {
+					// Download the display URL, which is always an image
+					// For media that are a video this is a thumbnail type image
+					promises.push(this.downloadPostChild({...baseDownloadOptions, shortcode: childMedia.shortcode, isVideo: false, mediaUrl: childMedia.displayUrl}));
+
+					if (childMedia.videoUrl !== undefined) {
+						// If the video URL is present download that as well
+						promises.push(this.downloadPostChild({...baseDownloadOptions, shortcode: childMedia.shortcode, isVideo: true, mediaUrl: childMedia.videoUrl}));
+					}
+				});
+
+				await Promise.all(promises);
 				break;
 			}
 
@@ -153,9 +155,9 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 		isVideo: boolean;
 		/** The shortcode for this child. */
 		shortcode: string;
-		/** The timestamp of the post */
+		/** The timestamp of the post. */
 		timestamp: Date;
-		/** The URL to download media from */
+		/** The URL to download media from. */
 		mediaUrl: string;
 		/** Base directory to use for downloads. */
 		directory: string;

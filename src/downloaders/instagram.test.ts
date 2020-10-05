@@ -1,5 +1,5 @@
 import test from 'ava';
-import {access} from 'fs/promises';
+import FileType from 'file-type';
 import {join} from 'path';
 import {InstagramDownloader, InstagramIdKind} from './instagram';
 
@@ -38,29 +38,58 @@ test.serial('resolveIds', async t => {
 });
 
 test.serial('download', async t => {
-	const downloadsPath = join(__dirname, '..', '..', 'test', 'downloads');
+	const downloadsPath = join(__dirname, '..', '..', 'test', 'downloads', 'InstagramDownloader');
+
+	const singleImagePost = async () => {
+		await instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CF2zmluMjL5'}});
+
+		const fileType = await FileType.fromFile(join(downloadsPath, 'instagram', 'CF2zmluMjL5', 'CF2zmluMjL5.jpg'));
+
+		t.is(fileType?.ext, 'jpg', 'single image post');
+	};
+
+	const singleVideoPost = async () => {
+		await instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CE7AhQ9jlQv'}});
+		const postPath = join(downloadsPath, 'instagram', 'CE7AhQ9jlQv');
+		await Promise.all(
+			[
+				async () => {
+					const fileType = await FileType.fromFile(join(postPath, 'CE7AhQ9jlQv.jpg'));
+					t.is(fileType?.ext, 'jpg', 'single video post');
+				},
+				async () => {
+					const fileType = await FileType.fromFile(join(postPath, 'CE7AhQ9jlQv.mp4'));
+					t.is(fileType?.ext, 'mp4', 'single video post');
+				}
+			].map(async fn => fn())
+		);
+	};
+
+	const mixedPost = async () => {
+		await instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CDmoxmVsOD_'}});
+		const postPath = join(downloadsPath, 'instagram', 'CDmoxmVsOD_');
+		await Promise.all(
+			[
+				async () => {
+					const fileType = await FileType.fromFile(join(postPath, 'CDmoxiAsn7s.jpg'));
+					t.is(fileType?.ext, 'jpg', 'mixed post image');
+				},
+				async () => {
+					const fileType = await FileType.fromFile(join(postPath, 'CDmokGvlNcu.jpg'));
+					t.is(fileType?.ext, 'jpg', 'mixed post video preview');
+				},
+				async () => {
+					const fileType = await FileType.fromFile(join(postPath, 'CDmokGvlNcu.mp4'));
+					t.is(fileType?.ext, 'mp4', 'mixed post video');
+				}
+			].map(async fn => fn())
+		);
+	};
 
 	await Promise.all([
-		t.notThrowsAsync(async () => {
-			await instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CF2zmluMjL5'}});
-
-			await access(join(downloadsPath, 'instagram', 'CF2zmluMjL5', 'CF2zmluMjL5.jpg'));
-		}, 'single image post'),
-		t.notThrowsAsync(async () => {
-			await instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CE7AhQ9jlQv'}});
-
-			await access(join(downloadsPath, 'instagram', 'CE7AhQ9jlQv', 'CE7AhQ9jlQv.mp4'));
-		}, 'single video post'),
-		t.notThrowsAsync(async () => {
-			await Promise.all([
-				instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CDmoxmVsOD_'}}),
-				instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Post, id: 'CDmoxmVsOD_'}})
-			]);
-
-			const postPath = join(downloadsPath, 'instagram', 'CDmoxmVsOD_');
-
-			await Promise.all([access(join(postPath, 'CDmoxiAsn7s.jpg')), access(join(postPath, 'CDmokGvlNcu.mp4'))]);
-		}, 'mixed post'),
+		singleImagePost(),
+		singleVideoPost(),
+		mixedPost(),
 		t.throwsAsync(instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Reel, id: "doesn't matter"}}), {
 			instanceOf: RangeError,
 			message: 'Not implemented'
