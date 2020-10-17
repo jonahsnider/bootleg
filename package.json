@@ -40,7 +40,7 @@
 		"type-fest": "0.17.0",
 		"typedoc": "0.19.2",
 		"typescript": "3.9.7",
-		"xo": "0.33.1"
+		"xo": "0.34.0"
 	},
 	"files": [
 		"./bin"
