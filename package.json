@@ -24,7 +24,7 @@
 	},
 	"dependencies": {
 		"@oclif/command": "1.8.0",
-		"convert": "1.0.1",
+		"convert": "1.1.1",
 		"got": "11.8.0"
 	},
 	"devDependencies": {
