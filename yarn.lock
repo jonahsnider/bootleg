@@ -1427,10 +1427,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
   integrity sha1-fj5Iu+bZl7FBfdyihoIEtNPYVxU=
 
-convert@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/convert/-/convert-1.0.1.tgz#ecd79818eefea860ff870895a5047a0a7cfadc3b"
-  integrity sha512-ctrYiOmzQZBzFWgmF+dN/x8NWkoTKkmMN+cmL/6v+SxN5Qc3pI0UMwokae/l3imw5tq4u2fWaNaAvmqOG/o9eQ==
+convert@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/convert/-/convert-1.1.1.tgz#8d08b2837ee79acdf7566f82d332daec6b641ee2"
+  integrity sha512-E48AFSZ3Fhk0M4Tf+3uhFshjjXr4f9FwV2Pi3LhuqRMd8O7r8r7y+e7mJnA+9pZ3SQ8niZjuQBxdzk2UGKWovw==
 
 copy-descriptor@^0.1.0:
   version "0.1.1"
