@@ -70,7 +70,7 @@
 	},
 	"scripts": {
 		"build": "tsc",
-		"docs": "typedoc --out docs_out --mode file --exclude \"src/*/*.test.*\"",
+		"docs": "typedoc --out docs_out src/index.ts",
 		"lint": "xo",
 		"prebuild": "rm -rf tsc_output",
 		"pretest": "rm -rf coverage .nyc_output test/downloads",
