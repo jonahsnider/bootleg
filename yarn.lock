@@ -1477,10 +1477,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
   integrity sha1-fj5Iu+bZl7FBfdyihoIEtNPYVxU=
 
-convert@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/convert/-/convert-1.6.1.tgz#70e51221d47f2be73faeea6fc2c01e3f400d752d"
-  integrity sha512-gahXeIsfYB7rdvO4xhrXlxXLdRTPiidezDzLno6qeQwF8tvrohpwA0mSbuqS1o3maiGCmpfXID55roO/EBMyaw==
+convert@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/convert/-/convert-1.6.2.tgz#a1280823a168d14b7b13261ee4837fe08c09e458"
+  integrity sha512-sPoB9KMlewWV7BRdwAEU2zQw85t5a/TTu7WU2qjcZ7t1NTp9l0HrGpAAxxce++qdoyLdF/ZpsA3y7MMPWBHjig==
 
 copy-descriptor@^0.1.0:
   version "0.1.1"
