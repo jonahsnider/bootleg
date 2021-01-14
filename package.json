@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@tsconfig/node14": "1.0.0",
-		"@types/node": "14.14.20",
+		"@types/node": "14.14.21",
 		"ava": "3.15.0",
 		"eslint-plugin-prettier": "3.3.1",
 		"file-type": "16.2.0",
