@@ -24,8 +24,10 @@
 	},
 	"dependencies": {
 		"@oclif/command": "1.8.0",
+		"cli-ux": "5.5.1",
 		"convert": "1.6.2",
-		"got": "11.8.1"
+		"got": "11.8.1",
+		"p-queue": "6.6.2"
 	},
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
