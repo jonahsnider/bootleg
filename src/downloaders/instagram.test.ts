@@ -86,13 +86,11 @@ test.serial('download', async t => {
 		);
 	};
 
-	await Promise.all([
-		singleImagePost(),
-		singleVideoPost(),
-		mixedPost(),
-		t.throwsAsync(instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Reel, id: "doesn't matter"}}), {
-			instanceOf: RangeError,
-			message: 'Not implemented'
-		})
-	]);
+	await singleImagePost();
+	await singleVideoPost();
+	await mixedPost();
+	await t.throwsAsync(instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Reel, id: "doesn't matter"}}), {
+		instanceOf: RangeError,
+		message: 'Not implemented'
+	});
 });
