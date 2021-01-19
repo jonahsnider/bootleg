@@ -23,16 +23,19 @@
 		"url": "https://github.com/pizzafox/bootleg/issues"
 	},
 	"dependencies": {
+		"@ltd/j-toml": "1.0.0",
 		"@oclif/command": "1.8.0",
 		"cli-ux": "5.5.1",
 		"convert": "1.6.2",
 		"got": "11.8.1",
-		"p-queue": "6.6.2"
+		"p-queue": "6.6.2",
+		"tough-cookie": "4.0.0"
 	},
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@tsconfig/node14": "1.0.0",
 		"@types/node": "14.14.21",
+		"@types/tough-cookie": "4.0.0",
 		"ava": "3.15.0",
 		"eslint-plugin-prettier": "3.3.1",
 		"file-type": "16.2.0",

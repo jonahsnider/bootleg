@@ -3,7 +3,7 @@ import FileType from 'file-type';
 import {join} from 'path';
 import {InstagramDownloader, InstagramIdKind} from './instagram';
 
-const instagramDownloader = new InstagramDownloader();
+const instagramDownloader = new InstagramDownloader(process.env.INSTAGRAM_SESSION_ID);
 
 test('canDownload', t => {
 	t.true(instagramDownloader.canDownload('https://www.instagram.com/p/CF2iwCfsSVI/'));

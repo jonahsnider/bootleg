@@ -1,0 +1,6 @@
+urls = [
+  "https://www.instagram.com/p/CF2iwCfsSVI/",
+]
+
+[api_tokens]
+instagram = "instagram token"

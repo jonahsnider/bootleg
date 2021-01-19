@@ -1,10 +1,8 @@
 import {Command, flags} from '@oclif/command';
-import {InstagramDownloader} from './downloaders';
-import {readLines} from './file-parser';
-import PromiseQueue from 'p-queue';
 import cli from 'cli-ux';
-
-const allDownloaders = [new InstagramDownloader()] as const;
+import PromiseQueue from 'p-queue';
+import {loadConfig} from './config';
+import {InstagramDownloader} from './downloaders';
 
 class Bootleg extends Command {
 	static flags = {
@@ -20,15 +18,16 @@ class Bootleg extends Command {
 		})
 	};
 
-	private readonly downloadQueue = new PromiseQueue({concurrency: 1, autoStart: false});
-	private readonly progress = cli.progress();
+	async run(): Promise<void> {
+		const downloadQueue = new PromiseQueue({concurrency: 1, autoStart: false});
+		const progress = cli.progress();
 
-	async run() {
 		const {flags} = this.parse(Bootleg);
 
-		const urls = await readLines(flags.file);
+		const options = await loadConfig(flags.file);
+		const allDownloaders = [new InstagramDownloader(options.apiTokens.instagram)] as const;
 
-		for (const url of urls) {
+		for (const url of options.urls) {
 			const downloader = allDownloaders.find(downloader => downloader.canDownload(url));
 
 			if (!downloader) {
@@ -36,23 +35,24 @@ class Bootleg extends Command {
 			}
 
 			// eslint-disable-next-line no-await-in-loop
-			const ids = await downloader.resolveIds(url);
+			const medias = await downloader.resolveIds(url);
 
-			const downloads = ids.map(id => async () => {
-				await downloader.download({directory: flags.dir, media: id});
-				this.progress.increment();
-			});
-
-			// eslint-disable-next-line no-await-in-loop
-			await this.downloadQueue.addAll(downloads);
+			for (const media of medias) {
+				downloadQueue
+					.add(async () => {
+						await downloader.download({directory: flags.dir, media});
+						progress.increment();
+					})
+					.catch(error => {
+						console.error(`Failed to queue media ID ${media.id} for ${url}`, error);
+					});
+			}
 		}
 
-		this.progress.start(this.downloadQueue.size);
-		this.downloadQueue.start();
-
-		await this.downloadQueue.onIdle();
-
-		this.progress.stop();
+		progress.start(downloadQueue.size);
+		downloadQueue.start();
+		await downloadQueue.onIdle();
+		progress.stop();
 	}
 }
 // eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires

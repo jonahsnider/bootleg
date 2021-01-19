@@ -5,6 +5,7 @@ import {join as joinPaths} from 'path';
 import {URL} from 'url';
 import {download} from '../download';
 import {Downloader, DownloadOptions, Media} from '../downloader';
+import {CookieJar} from 'tough-cookie';
 
 export enum InstagramIdKind {
 	Post = 'post',
@@ -42,8 +43,16 @@ const instagramHostname = /^(www\.)?instagram\.com$/i;
  * @see https://instagram.com Instagram website
  */
 export class InstagramDownloader extends Downloader<InstagramMedia> {
-	constructor() {
+	cookieJar: CookieJar;
+
+	constructor(sessionId?: string) {
 		super('instagram');
+
+		this.cookieJar = new CookieJar();
+
+		if (sessionId !== undefined) {
+			this.cookieJar.setCookieSync(`sessionid=${sessionId}`, 'https://www.instagram.com');
+		}
 	}
 
 	/**
@@ -92,7 +101,11 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 	async download({media, directory}: DownloadOptions<InstagramMedia>): Promise<void> {
 		switch (media.kind) {
 			case InstagramIdKind.Post: {
-				const {body: postData} = await got<PostData>(`https://instagram.com/p/${media.id}?__a=1`, {responseType: 'json'});
+				const {body: postData} = await got<PostData>(`https://instagram.com/p/${media.id}`, {
+					responseType: 'json',
+					cookieJar: this.cookieJar,
+					searchParams: {__a: '1'}
+				});
 
 				const shortcodeMedia = postData.graphql.shortcode_media;
 				const timestamp = new Date(convert(shortcodeMedia.taken_at_timestamp).from('seconds').to('ms'));

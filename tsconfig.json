@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"moduleResolution": "node",
 		"outDir": "tsc_output",
-		"sourceMap": true
+		"sourceMap": true,
+		"experimentalDecorators": true
 	},
 	"exclude": ["node_modules", "nyc_output", "coverage"],
 	"include": ["src"]
