@@ -35,7 +35,7 @@ interface PostData {
 	};
 }
 
-const instagramHostname = /^(www\.)?instagram\.com$/;
+const instagramHostname = /^(www\.)?instagram\.com$/i;
 
 /**
  * Downloader for Instagram.
@@ -116,6 +116,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 					}
 				} else {
 					// Single item for this post
+
 					childMedias.push({displayUrl: shortcodeMedia.display_url, shortcode: shortcodeMedia.shortcode, videoUrl: shortcodeMedia.video_url});
 				}
 
