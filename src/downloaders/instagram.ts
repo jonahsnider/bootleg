@@ -111,9 +111,9 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 				if (shortcodeMedia.edge_sidecar_to_children) {
 					// Multiple items for this post
 
-					shortcodeMedia.edge_sidecar_to_children.edges.forEach(({node}) =>
-						childMedias.push({shortcode: node.shortcode, displayUrl: node.display_url, videoUrl: node.video_url})
-					);
+					for (const {node} of shortcodeMedia.edge_sidecar_to_children.edges) {
+						childMedias.push({shortcode: node.shortcode, displayUrl: node.display_url, videoUrl: node.video_url});
+					}
 				} else {
 					// Single item for this post
 					childMedias.push({displayUrl: shortcodeMedia.display_url, shortcode: shortcodeMedia.shortcode, videoUrl: shortcodeMedia.video_url});
@@ -121,7 +121,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 
 				const promises: Array<Promise<void>> = [];
 
-				childMedias.forEach(childMedia => {
+				for (const childMedia of childMedias) {
 					// Download the display URL, which is always an image
 					// For media that are a video this is a thumbnail type image
 					promises.push(this.downloadPostChild({...baseDownloadOptions, shortcode: childMedia.shortcode, isVideo: false, mediaUrl: childMedia.displayUrl}));
@@ -130,7 +130,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 						// If the video URL is present download that as well
 						promises.push(this.downloadPostChild({...baseDownloadOptions, shortcode: childMedia.shortcode, isVideo: true, mediaUrl: childMedia.videoUrl}));
 					}
-				});
+				}
 
 				await Promise.all(promises);
 				break;
