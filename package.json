@@ -23,7 +23,7 @@
 		"url": "https://github.com/pizzafox/bootleg/issues"
 	},
 	"dependencies": {
-		"@ltd/j-toml": "1.1.0",
+		"@ltd/j-toml": "1.2.0",
 		"@oclif/command": "1.8.0",
 		"cli-ux": "5.5.1",
 		"convert": "1.6.2",
