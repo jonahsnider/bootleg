@@ -222,10 +222,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@ltd/j-toml@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@ltd/j-toml/-/j-toml-1.2.0.tgz#43d4933340a7c21b34b44e3238e25a808ffc4a0e"
-  integrity sha512-l6ttHEFocfDqlI3+4NOyJ1Qh7XSjahVwbaiaXnKxBG8bEPwwxK6GLe2iUZ8CXF+lsIIo+q14zYMt8ddvHfPnQw==
+"@ltd/j-toml@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@ltd/j-toml/-/j-toml-1.3.0.tgz#05fad9a0ce7153f456c5753af0de6f56bd48a11f"
+  integrity sha512-WJ9lZkz/nsgr+EEvuWA4aZQ/dcoFOcaLg7jE4lEx5Jf1OQcS22HEFZrB9Fr8wpEZtBTtPdOToCSllGGeafBIHA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
