@@ -1520,10 +1520,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
   integrity sha1-fj5Iu+bZl7FBfdyihoIEtNPYVxU=
 
-convert@1.8.2:
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/convert/-/convert-1.8.2.tgz#7656bbc4a4b639c08020009a51a7622c8a6944d5"
-  integrity sha512-7yREoRYRtxEnF5Z95L0k0xwie4OPxl2CB43/r+R5O/WoV7Y57GAXTSXmsuXrZ6kQTzGHmCrjAaw6efxCPOZWGQ==
+convert@1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/convert/-/convert-1.8.3.tgz#8f56284df948e87978c2b15602814a47c618fb96"
+  integrity sha512-CfeS0vlOrt8FD3SL2A/eIpFGdzHJ0cGKj5SRDBzAZrpYbD3NzSL02UeebqsEBsnvJz6BAfVYEGwPfLHMCi/ItA==
 
 copy-descriptor@^0.1.0:
   version "0.1.1"
