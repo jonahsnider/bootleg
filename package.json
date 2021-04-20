@@ -20,7 +20,7 @@
 		"bootleg": "./bin/run"
 	},
 	"bugs": {
-		"url": "https://github.com/pizzafox/bootleg/issues"
+		"url": "https://github.com/jonahsnider/bootleg/issues"
 	},
 	"dependencies": {
 		"@ltd/j-toml": "1.12.2",
@@ -71,7 +71,7 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/pizzafox/bootleg.git"
+		"url": "git+https://github.com/jonahsnider/bootleg.git"
 	},
 	"scripts": {
 		"build": "tsc",
