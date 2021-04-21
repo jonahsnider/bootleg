@@ -43,10 +43,10 @@ const supportedPlatforms = new Set(['instagram']);
 function validateRawConfig(config: object): config is RawConfig {
 	let seenUrls = false;
 
-	for (const [key, value] of Object.entries(config)) {
+	for (const [key, value] of Object.entries(config as Record<string, unknown>)) {
 		switch (key) {
 			case 'api_tokens': {
-				if (typeof value !== 'object') {
+				if (typeof value !== 'object' || value === null) {
 					throw new RangeError('Expected api_tokens to be an object');
 				}
 
