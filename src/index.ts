@@ -20,7 +20,7 @@ class Bootleg extends Command {
 
 	async run(): Promise<void> {
 		const downloadQueue = new PromiseQueue({concurrency: 1, autoStart: false});
-		const progress = cli.progress();
+		const progress = cli.progress() as {increment: () => void; start: (max: number, min?: number) => void; stop: () => void};
 
 		const {flags} = this.parse(Bootleg);
 
@@ -55,5 +55,5 @@ class Bootleg extends Command {
 		progress.stop();
 	}
 }
-// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-argument
+// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-require-imports
 Bootleg.run().then(null, require('@oclif/errors/handle'));

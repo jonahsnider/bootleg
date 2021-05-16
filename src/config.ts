@@ -1,8 +1,8 @@
-import {parse as parseToml} from '@ltd/j-toml';
 import {PathLike} from 'fs';
 import os from 'os';
 import * as fs from 'fs/promises';
 import {URL} from 'url';
+import {parse as parseToml} from '@ltd/j-toml';
 
 class ApiTokens {
 	instagram?: string;

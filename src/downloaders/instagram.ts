@@ -1,11 +1,11 @@
-import {convert} from 'convert';
 import {mkdir} from 'fs/promises';
-import got from 'got';
 import {join as joinPaths} from 'path';
 import {URL} from 'url';
+import {convert} from 'convert';
+import got from 'got';
+import {CookieJar} from 'tough-cookie';
 import {download} from '../download';
 import {Downloader, DownloadOptions, Media} from '../downloader';
-import {CookieJar} from 'tough-cookie';
 
 export enum InstagramIdKind {
 	Post = 'post',

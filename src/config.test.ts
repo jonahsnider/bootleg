@@ -1,5 +1,5 @@
-import test from 'ava';
 import {join as joinPaths} from 'path';
+import test from 'ava';
 import {loadConfig} from './config';
 
 test('loadConfig', async t => {
