@@ -1,6 +1,6 @@
+import {join} from 'path';
 import test from 'ava';
 import FileType from 'file-type';
-import {join} from 'path';
 import {InstagramDownloader, InstagramIdKind} from './instagram';
 
 const instagramDownloader = new InstagramDownloader(process.env.INSTAGRAM_SESSION_ID);

@@ -84,6 +84,10 @@
 	},
 	"version": "1.0.0",
 	"xo": {
-		"prettier": true
+		"prettier": true,
+		"rules": {
+			"unicorn/prefer-node-protocol": "off",
+			"unicorn/prefer-module": "off"
+		}
 	}
 }
