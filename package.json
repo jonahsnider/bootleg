@@ -28,7 +28,7 @@
 		"cli-ux": "5.5.1",
 		"convert": "1.9.1",
 		"got": "11.8.2",
-		"p-queue": "6.6.2",
+		"p-queue": "7.1.0",
 		"tough-cookie": "4.0.0"
 	},
 	"devDependencies": {
