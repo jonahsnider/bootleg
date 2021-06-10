@@ -37,7 +37,7 @@ test.serial('resolveIds', async t => {
 	]);
 });
 
-test.serial('download', async t => {
+test.serial.skip('download', async t => {
 	const downloadsPath = join(__dirname, '..', '..', 'test', 'downloads', 'InstagramDownloader');
 
 	const singleImagePost = async () => {
