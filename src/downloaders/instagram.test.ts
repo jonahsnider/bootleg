@@ -37,6 +37,7 @@ test.serial('resolveIds', async t => {
 	]);
 });
 
+// eslint-disable-next-line ava/no-skip-test
 test.serial.skip('download', async t => {
 	const downloadsPath = join(__dirname, '..', '..', 'test', 'downloads', 'InstagramDownloader');
 
