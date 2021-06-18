@@ -108,7 +108,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 				});
 
 				const shortcodeMedia = postData.graphql.shortcode_media;
-				const timestamp = new Date(convert(shortcodeMedia.taken_at_timestamp).from('seconds').to('ms'));
+				const timestamp = new Date(convert(shortcodeMedia.taken_at_timestamp, 'seconds').to('ms'));
 				const {username} = shortcodeMedia.owner;
 
 				// Create the directory of the post owner's username
