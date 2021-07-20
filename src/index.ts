@@ -55,5 +55,5 @@ class Bootleg extends Command {
 		progress.stop();
 	}
 }
-// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-require-imports
+// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 Bootleg.run().then(null, require('@oclif/errors/handle'));
