@@ -8,9 +8,10 @@ Download media from social media.
 
 ## Project scope
 
-The goal for Bootleg is to be one of the fastest social media downloaders that exist.
-The easiest way to accomplish this goal is to avoid scraping websites, which is what most atlernatives do.
-This consumes much more data and can easily break if the website layout changes.
+The goal is for Bootleg to be a very fast and simple to use downloader application.
+Most alternatives download content by scraping websites.
+This is very inefficient and is prone to breaking if the website layout changes.
+Instead, Bootleg uses official APIs to query for exactly what needs to be downloaded.
 
 ## Supported services
 
