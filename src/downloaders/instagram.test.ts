@@ -1,4 +1,5 @@
 import {join} from 'path';
+import process from 'process';
 import test from 'ava';
 import FileType from 'file-type';
 import {InstagramDownloader, InstagramIdKind} from './instagram';
