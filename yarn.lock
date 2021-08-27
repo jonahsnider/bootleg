@@ -1329,10 +1329,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
   integrity sha1-fj5Iu+bZl7FBfdyihoIEtNPYVxU=
 
-convert@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/convert/-/convert-2.1.1.tgz#5fe07a188e645a99a0c7de7eb4cdee78bc49a5d4"
-  integrity sha512-96U6MR3u6oQ73IQM07JN6w+MWKdrsj7N4z+XyX65CXNTD+osJYbIZbW81S1wGluud6SoPlVch6gKe+2P5IIkuA==
+convert@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/convert/-/convert-2.2.0.tgz#50a3b2fa0f68d4dc3cf4784e12e77a6c7133c984"
+  integrity sha512-FnIYA16sE1sHH+bImWwyrghydt9YJT9yMy4F144bFSgu+fGsVwUGghyTEJm4LEu2lRBozFZ0cf9EMrc+OGiw9g==
 
 core-assert@^0.2.0:
   version "0.2.1"
