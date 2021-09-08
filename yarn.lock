@@ -1334,10 +1334,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
   integrity sha1-fj5Iu+bZl7FBfdyihoIEtNPYVxU=
 
-convert@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/convert/-/convert-2.2.1.tgz#6e6b165361d814afe641c4ef70ea0701d3c7584a"
-  integrity sha512-/0z8u9UaGZiIJH4SegWlpikR36BkHG8UCq+urt9ixM48LVRvwQjKDhv/5B12n+zuRyxVWclg1hX/n6kbZ4K6EA==
+convert@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/convert/-/convert-3.1.0.tgz#2a62eced6ad2c905e228447d04e38d078b3ee00c"
+  integrity sha512-nj/3ObIo0Fd6kBATo9Ru6y3H18zBi4Ja4GvF7aYqosTacqkADHxPrDmy41wj2lUI8y5otLOxjfGwAMfhRB//+g==
 
 core-assert@^0.2.0:
   version "0.2.1"
