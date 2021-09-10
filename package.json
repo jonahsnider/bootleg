@@ -41,7 +41,7 @@
 		"file-type": "16.5.3",
 		"nyc": "15.1.0",
 		"prettier": "2.3.2",
-		"source-map-support": "0.5.19",
+		"source-map-support": "0.5.20",
 		"ts-node": "10.2.1",
 		"type-fest": "2.2.0",
 		"typedoc": "0.21.9",
