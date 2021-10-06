@@ -11,12 +11,12 @@ class Bootleg extends Command {
 		help: flags.help(),
 		dir: flags.string({
 			char: 'd',
-			default: process.cwd()
+			default: process.cwd(),
 		}),
 		file: flags.string({
 			char: 'f',
-			required: true
-		})
+			required: true,
+		}),
 	};
 
 	async run(): Promise<void> {

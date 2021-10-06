@@ -1,8 +1,8 @@
 {
 	"author": {
-		"email": "jonah@jonah.pw",
+		"email": "jonah@jonahsnider.com",
 		"name": "Jonah Snider",
-		"url": "https://jonah.pw"
+		"url": "https://jonahsnider.com"
 	},
 	"ava": {
 		"extensions": [
@@ -33,21 +33,23 @@
 	},
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
-		"@tsconfig/node14": "1.0.1",
-		"@types/node": "14.17.21",
+		"@jonahsnider/prettier-config": "1.0.0",
+		"@jonahsnider/xo-config": "1.0.0",
+		"@tsconfig/node16": "1.0.2",
+		"@types/node": "16.10.3",
 		"@types/tough-cookie": "4.0.1",
 		"ava": "3.15.0",
-		"eslint-plugin-prettier": "4.0.0",
 		"file-type": "16.5.3",
 		"nyc": "15.1.0",
-		"prettier": "2.3.2",
+		"prettier": "2.4.1",
 		"source-map-support": "0.5.20",
 		"ts-node": "10.2.1",
 		"type-fest": "2.3.4",
 		"typedoc": "0.22.5",
-		"typescript": "4.3.5",
-		"xo": "0.43.0"
+		"typescript": "4.4.3",
+		"xo": "0.45.0"
 	},
+	"prettier": "@jonahsnider/prettier-config",
 	"files": [
 		"./bin"
 	],
@@ -82,12 +84,5 @@
 		"style": "prettier --ignore-path .gitignore --check .",
 		"test": "nyc ava"
 	},
-	"version": "1.0.0",
-	"xo": {
-		"prettier": true,
-		"rules": {
-			"unicorn/prefer-node-protocol": "off",
-			"unicorn/prefer-module": "off"
-		}
-	}
+	"version": "1.0.0"
 }

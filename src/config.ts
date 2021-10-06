@@ -9,9 +9,11 @@ class ApiTokens {
 }
 
 class RawConfig {
+	/* eslint-disable @typescript-eslint/naming-convention */
 	urls!: string[];
 
 	api_tokens?: ApiTokens;
+	/* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export interface Config {
@@ -31,9 +33,9 @@ export async function loadConfig(path: PathLike): Promise<Config> {
 
 	return {
 		apiTokens: {
-			instagram: parsed.api_tokens?.instagram
+			instagram: parsed.api_tokens?.instagram,
 		},
-		urls: parsed.urls
+		urls: parsed.urls,
 	};
 }
 

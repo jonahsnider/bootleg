@@ -17,13 +17,13 @@ test.serial('resolveIds', async t => {
 	t.deepEqual(
 		await instagramDownloader.resolveIds('https://www.instagram.com/stories/instagram/0123456789/'),
 		[{id: '0123456789', kind: InstagramIdKind.Story}],
-		'story'
+		'story',
 	);
 
 	t.deepEqual(
 		await instagramDownloader.resolveIds('https://www.instagram.com/reel/reel_id/?igshid=share_id'),
 		[{id: 'reel_id', kind: InstagramIdKind.Reel}],
-		'reel'
+		'reel',
 	);
 
 	await Promise.all([
@@ -32,9 +32,9 @@ test.serial('resolveIds', async t => {
 		t.throwsAsync(
 			instagramDownloader.resolveIds('https://instagram.com/unknown_media_type/id/more_data?query=param'),
 			{instanceOf: RangeError, message: 'Unexpected media type'},
-			'throws on unknown media type'
+			'throws on unknown media type',
 		),
-		t.throwsAsync(instagramDownloader.resolveIds('https://instagram.com/instagram'), {instanceOf: RangeError}, 'throws on user')
+		t.throwsAsync(instagramDownloader.resolveIds('https://instagram.com/instagram'), {instanceOf: RangeError}, 'throws on user'),
 	]);
 });
 
@@ -62,8 +62,8 @@ test.serial.skip('download', async t => {
 				async () => {
 					const fileType = await FileType.fromFile(join(postPath, 'CE7AhQ9jlQv.mp4'));
 					t.is(fileType?.ext, 'mp4', 'single video post');
-				}
-			].map(async fn => fn())
+				},
+			].map(async fn => fn()),
 		);
 	};
 
@@ -83,8 +83,8 @@ test.serial.skip('download', async t => {
 				async () => {
 					const fileType = await FileType.fromFile(join(postPath, 'CDmokGvlNcu.mp4'));
 					t.is(fileType?.ext, 'mp4', 'mixed post video');
-				}
-			].map(async fn => fn())
+				},
+			].map(async fn => fn()),
 		);
 	};
 
@@ -93,6 +93,6 @@ test.serial.skip('download', async t => {
 	await mixedPost();
 	await t.throwsAsync(instagramDownloader.download({directory: downloadsPath, media: {kind: InstagramIdKind.Reel, id: "doesn't matter"}}), {
 		instanceOf: RangeError,
-		message: 'Not implemented'
+		message: 'Not implemented',
 	});
 });
