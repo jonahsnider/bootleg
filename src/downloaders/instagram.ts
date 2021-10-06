@@ -11,7 +11,7 @@ export enum InstagramIdKind {
 	Post = 'post',
 	Profile = 'profile',
 	Reel = 'reel',
-	Story = 'story'
+	Story = 'story',
 }
 
 type InstagramMedia = Media<InstagramIdKind>;
@@ -104,7 +104,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 				const {body: postData} = await got<PostData>(`https://instagram.com/p/${media.id}`, {
 					responseType: 'json',
 					cookieJar: this.cookieJar,
-					searchParams: {__a: '1'}
+					searchParams: {__a: '1'},
 				});
 
 				const shortcodeMedia = postData.graphql.shortcode_media;
@@ -179,7 +179,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 		return download(
 			got.stream(options.mediaUrl),
 			joinPaths(options.directory, options.username, options.parentShortcode, `${options.shortcode}.${options.isVideo ? 'mp4' : 'jpg'}`),
-			options.timestamp
+			options.timestamp,
 		);
 	}
 }
