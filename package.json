@@ -23,7 +23,7 @@
 		"url": "https://github.com/jonahsnider/bootleg/issues"
 	},
 	"dependencies": {
-		"@ltd/j-toml": "1.20.0",
+		"@ltd/j-toml": "1.22.0",
 		"@oclif/command": "1.8.0",
 		"cli-ux": "5.6.3",
 		"convert": "4.2.4",
