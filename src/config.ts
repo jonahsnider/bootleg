@@ -1,4 +1,4 @@
-import {PathLike} from 'fs';
+import type {PathLike} from 'fs';
 import os from 'os';
 import * as fs from 'fs/promises';
 import {URL} from 'url';
@@ -43,7 +43,7 @@ const supportedPlatforms = new Set(['instagram']);
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function validateRawConfig(config: object): config is RawConfig {
-	let seenUrls = false;
+	let hasSeenUrls = false;
 
 	for (const [key, value] of Object.entries(config as Record<string, unknown>)) {
 		switch (key) {
@@ -81,14 +81,14 @@ function validateRawConfig(config: object): config is RawConfig {
 					}
 				}
 
-				seenUrls = true;
+				hasSeenUrls = true;
 				break;
 			default:
 				throw new RangeError(`Unknown value ${key}`);
 		}
 	}
 
-	if (!seenUrls) {
+	if (!hasSeenUrls) {
 		throw new RangeError('Required value urls was missing');
 	}
 

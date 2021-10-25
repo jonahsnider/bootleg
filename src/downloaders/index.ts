@@ -1,1 +1,1 @@
-export {InstagramDownloader} from './instagram';
+export {InstagramDownloader} from './instagram.js';

@@ -2,8 +2,8 @@ import process from 'process';
 import {Command, flags} from '@oclif/command';
 import cli from 'cli-ux';
 import PromiseQueue from 'p-queue';
-import {loadConfig} from './config';
-import {InstagramDownloader} from './downloaders';
+import {loadConfig} from './config.js';
+import {InstagramDownloader} from './downloaders/index.js';
 
 class Bootleg extends Command {
 	static flags = {
@@ -56,5 +56,5 @@ class Bootleg extends Command {
 		progress.stop();
 	}
 }
-// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, import/extensions
 Bootleg.run().then(null, require('@oclif/errors/handle'));

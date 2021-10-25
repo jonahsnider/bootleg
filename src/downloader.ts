@@ -35,7 +35,7 @@ export abstract class Downloader<T> {
 
 	/**
 	 * Check if a media resolvable can be downloaded by this downloader.
-	 * @param media Media to check
+	 * @param media - Media to check
 	 * @returns `true` when the media can be downloaded by this downloader
 	 */
 	public abstract canDownload(media: string): boolean;

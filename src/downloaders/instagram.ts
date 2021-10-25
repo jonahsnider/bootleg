@@ -4,8 +4,9 @@ import {URL} from 'url';
 import {convert} from 'convert';
 import got from 'got';
 import {CookieJar} from 'tough-cookie';
-import {download} from '../download';
-import {Downloader, DownloadOptions, Media} from '../downloader';
+import {download} from '../download.js';
+import type {DownloadOptions, Media} from '../downloader.js';
+import {Downloader} from '../downloader.js';
 
 export enum InstagramIdKind {
 	Post = 'post',
@@ -158,7 +159,7 @@ export class InstagramDownloader extends Downloader<InstagramMedia> {
 
 	/**
 	 * Downloads a singular image or video from a post.
-	 * @param options Options for downloading
+	 * @param options - Options for downloading
 	 */
 	private async downloadPostChild(options: {
 		/** Username of the post owner. */
