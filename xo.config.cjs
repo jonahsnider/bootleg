@@ -4,5 +4,6 @@ const config = {...base};
 
 config.rules['unicorn/prefer-module'] = 'off';
 config.rules['unicorn/prefer-node-protocol'] = 'off';
+config.rules['import/extensions'] = 'off';
 
 module.exports = config;

@@ -1,6 +1,8 @@
-import {createWriteStream, PathLike} from 'fs';
+import type {PathLike} from 'fs';
+import {createWriteStream} from 'fs';
 import {utimes} from 'fs/promises';
-import {pipeline as pipelineWithCallback, Readable} from 'stream';
+import type {Readable} from 'stream';
+import {pipeline as pipelineWithCallback} from 'stream';
 import {promisify} from 'util';
 
 const pipeline = promisify(pipelineWithCallback);
