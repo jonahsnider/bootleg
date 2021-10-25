@@ -2,8 +2,8 @@ import process from 'process';
 import {Command, flags} from '@oclif/command';
 import cli from 'cli-ux';
 import PromiseQueue from 'p-queue';
-import {loadConfig} from './config.js';
-import {InstagramDownloader} from './downloaders/index.js';
+import {loadConfig} from './config';
+import {InstagramDownloader} from './downloaders/index';
 
 class Bootleg extends Command {
 	static flags = {

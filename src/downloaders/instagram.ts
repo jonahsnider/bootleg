@@ -4,9 +4,9 @@ import {URL} from 'url';
 import {convert} from 'convert';
 import got from 'got';
 import {CookieJar} from 'tough-cookie';
-import {download} from '../download.js';
-import type {DownloadOptions, Media} from '../downloader.js';
-import {Downloader} from '../downloader.js';
+import {download} from '../download';
+import type {DownloadOptions, Media} from '../downloader';
+import {Downloader} from '../downloader';
 
 export enum InstagramIdKind {
 	Post = 'post',
