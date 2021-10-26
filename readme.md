@@ -1,8 +1,8 @@
 # Bootleg
 
-[![Build Status](https://github.com/pizzafox/bootleg/workflows/CI/badge.svg)](https://github.com/pizzafox/bootleg/actions)
+[![Build Status](https://github.com/jonahsnider/bootleg/workflows/CI/badge.svg)](https://github.com/jonahsnider/bootleg/actions)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
-[![codecov](https://codecov.io/gh/pizzafox/bootleg/branch/master/graph/badge.svg)](https://codecov.io/gh/pizzafox/bootleg)
+[![codecov](https://codecov.io/gh/jonahsnider/bootleg/branch/master/graph/badge.svg)](https://codecov.io/gh/jonahsnider/bootleg)
 
 Download media from social media.
 
@@ -75,4 +75,4 @@ yarn run test
 ### Coverage
 
 This will generate a `coverage` folder which has a breakdown of coverage of the project.
-The CI will upload the coverage information to [CodeCov](https://codecov.io) which can be [viewed here](https://codecov.io/gh/pizzafox/bootleg).
+The CI will upload the coverage information to [CodeCov](https://codecov.io) which can be [viewed here](https://codecov.io/gh/jonahsnider/bootleg).
